@@ -43,10 +43,14 @@ class SerialportPlugin: FlutterPlugin, MethodCallHandler {
         result.success(list)
       }
 
-      "embeddedSerial/open" -> communication.open(
-        argments?.get("serialPort"), argments?.get("dataFormat")?.toBoolean(), argments?.get("baudRate")!!
-          .toInt()
-      )
+      "embeddedSerial/open" -> argments?.get("serialPort")?.let {
+        argments["dataFormat"]?.toBoolean()?.let { it1 ->
+          communication.open(
+            it, it1, argments["baudRate"]!!
+                .toInt()
+          )
+        }
+      }
 
       "embeddedSerial/close" -> communication.close()
 
