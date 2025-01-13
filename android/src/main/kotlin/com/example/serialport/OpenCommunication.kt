@@ -1,6 +1,7 @@
 package com.example.serialport
 
 import android.R.attr.port
+import android.util.Log
 import cn.lalaki.SerialPort
 import java.io.File
 
@@ -24,7 +25,8 @@ class OpenCommunication {
                     val value = (StringBuffer()
                         .append(port).append("/").append(if (isAscii) "ascii" else "hex")
                         .append(" read：").append(data).append("\n").toString())
-                    CustomEventHandler.sendEvent(value)
+                    Log.e("scale data", "onData: ${value}", )
+//                    CustomEventHandler.sendEvent(value)
                 }
             })
         }

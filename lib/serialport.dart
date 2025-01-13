@@ -74,23 +74,3 @@ Stream<String?> startSerial() {
   ];
 }
 
-
-
-class SerialResponse {
-
-  final String? readChannel;
-  SerialResponse({
-
-    this.readChannel,
-  });
-
-  factory SerialResponse.fromMap(Map<String, dynamic> map) {
-    return SerialResponse(
- 
-      readChannel: map['readChannel'],
-    );
-  }
-
-  factory SerialResponse.fromJson(String source) =>
-      SerialResponse.fromMap(json.decode(source));
-}
