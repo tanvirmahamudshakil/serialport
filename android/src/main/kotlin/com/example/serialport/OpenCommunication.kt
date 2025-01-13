@@ -22,10 +22,8 @@ class OpenCommunication {
         if(name != null && baudRate != null && isAscii != null) {
             serialPort = SerialPort(name, baudRate, object : SerialPort.DataCallback {
                 override fun onData(data: ByteArray) {
-                    val value = (StringBuffer()
-                        .append(port).append("/").append(if (isAscii) "ascii" else "hex")
-                        .append(" read：").append(data).append("\n").toString())
-                    Log.e("scale data", "onData: ${value}", )
+
+                    Log.e("scale data", "onData: ${String(data)}", )
 //                    CustomEventHandler.sendEvent(value)
                 }
             })
